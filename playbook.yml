@@ -1,0 +1,14 @@
+---
+- name: Example S3 bucket tasks
+  hosts: all
+  gather_facts: no
+
+
+  tasks:
+    - name: Show tags of the S3 bucket
+      debug:
+        var: hostvars[inventory_hostname]['tags']['Environment']
+
+    - name: Perform tasks based on the Environment tag
+      debug:
+        msg: "Performing tasks on S3 bucket {{ inventory_hostname }} with environment {{ hostvars[inventory_hostname]['tags']['Environment'] }}"
